@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brunm - Gráfica Rápida e Personalizada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-gray': '#222222',
+                        'orange': '#F3974D',
+                        'pink': '#A12561',
+                        'teal': '#5DBEB6',
+                        'blue': '#1D66A0'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1D66A0 0%, #5DBEB6 50%, #F3974D 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-gray">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Brunm Logo" class="h-10 sm:h-12 w-auto">
+                </div>
+                <div class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="#home" class="text-dark-gray hover:text-orange transition-colors text-sm lg:text-base">Início</a>
+                    <a href="#about" class="text-dark-gray hover:text-orange transition-colors text-sm lg:text-base">Sobre</a>
+                    <a href="#services" class="text-dark-gray hover:text-orange transition-colors text-sm lg:text-base">Serviços</a>
+                    <a href="#portfolio" class="text-dark-gray hover:text-orange transition-colors text-sm lg:text-base">Portfólio</a>
+                    <a href="#contact" class="text-dark-gray hover:text-orange transition-colors text-sm lg:text-base">Contato</a>
+                </div>
+                <button class="md:hidden text-dark-gray p-2" onclick="toggleMenu()">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200">
+                <a href="#home" class="block py-3 text-dark-gray hover:text-orange transition-colors">Início</a>
+                <a href="#about" class="block py-3 text-dark-gray hover:text-orange transition-colors">Sobre</a>
+                <a href="#services" class="block py-3 text-dark-gray hover:text-orange transition-colors">Serviços</a>
+                <a href="#portfolio" class="block py-3 text-dark-gray hover:text-orange transition-colors">Portfólio</a>
+                <a href="#contact" class="block py-3 text-dark-gray hover:text-orange transition-colors">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background with geometric shapes -->
+        <div class="absolute inset-0 bg-gradient-to-br from-dark-gray via-blue to-teal">
+            <div class="absolute top-20 left-10 w-32 h-32 bg-orange/20 rounded-full blur-xl animate-pulse"></div>
+            <div class="absolute top-40 right-20 w-24 h-24 bg-pink/30 rounded-full blur-lg animate-bounce"></div>
+            <div class="absolute bottom-32 left-1/4 w-40 h-40 bg-teal/20 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-1/3 w-28 h-28 bg-orange/25 rounded-full blur-xl animate-bounce"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 text-center text-white relative z-10">
+            <div class="animate-fade-in">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight">
+                    <span class="block text-white">Sua Gráfica Digital</span>
+                    <span class="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mt-4 text-gray-200">
+                        Rápida • Criativa • Personalizada
+                    </span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 max-w-4xl mx-auto opacity-95 px-4 leading-relaxed">
+                    <span class="block mb-2">✨ <strong>Impressões do dia a dia</strong> aos <strong>projetos mais criativos</strong></span>
+                    <span class="text-base sm:text-lg text-gray-300">Xerox • Convites • Fotos • Brindes • Carimbos • E muito mais!</span>
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8">
+                    <a href="#services" class="group w-full sm:w-auto bg-gradient-to-r from-orange to-pink hover:from-pink hover:to-orange text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl text-lg sm:text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl transform">
+                        <i class="fas fa-rocket mr-2 group-hover:animate-bounce"></i>
+                        Ver Todos os Serviços
+                    </a>
+                    <a href="https://wa.me/5511999999999" target="_blank" class="group w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl text-lg sm:text-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                        <i class="fab fa-whatsapp mr-2 group-hover:animate-pulse"></i>
+                        Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-16 sm:mt-20 animate-bounce">
+                <a href="#about" class="inline-block">
+                    <i class="fas fa-chevron-down text-3xl sm:text-4xl opacity-80 hover:opacity-100 transition-opacity"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 sm:py-16 lg:py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16 animate-slide-up">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Sobre a <span class="text-orange">Brunm</span></h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                    Há anos no mercado gráfico, oferecemos soluções completas em impressão e design, 
+                    sempre priorizando a qualidade, rapidez e personalização que nossos clientes merecem.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="text-center card-hover bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-orange/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-orange text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Rapidez</h3>
+                    <p class="text-gray-600">Entregamos seus projetos com agilidade sem comprometer a qualidade</p>
+                </div>
+                <div class="text-center card-hover bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+                    <div class="w-16 h-16 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-palette text-teal text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Personalização</h3>
+                    <p class="text-gray-600">Cada projeto é único e desenvolvido especialmente para você</p>
+                </div>
+                <div class="text-center card-hover bg-white p-6 sm:p-8 rounded-2xl shadow-lg sm:col-span-2 lg:col-span-1">
+                    <div class="w-16 h-16 bg-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-award text-blue text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Qualidade</h3>
+                    <p class="text-gray-600">Utilizamos os melhores materiais e tecnologias disponíveis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-12 sm:py-16 lg:py-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Nossos <span class="text-pink">Serviços</span></h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
+                    Oferecemos uma ampla gama de serviços gráficos para atender todas as suas necessidades
+                </p>
+            </div>
+
+            <!-- Serviços Rápidos -->
+            <div class="mb-12 sm:mb-16">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-orange flex items-center justify-center">
+                    <i class="fas fa-bolt mr-3"></i>
+                    Serviços Rápidos (do dia a dia)
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-copy text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Xerox</h4>
+                        <p class="text-sm text-gray-600">P&B e colorido</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-print text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Impressões</h4>
+                        <p class="text-sm text-gray-600">A4, A3, frente e verso</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-file-invoice text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Boletos e Taxas</h4>
+                        <p class="text-sm text-gray-600">Detran, contas, gov.br</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-scanner text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Digitalização</h4>
+                        <p class="text-sm text-gray-600">Documentos diversos</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-share text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Envio de Arquivos</h4>
+                        <p class="text-sm text-gray-600">E-mail ou WhatsApp</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-user-tie text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Currículos</h4>
+                        <p class="text-sm text-gray-600">Simples e criativos</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-book text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Encadernação <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Espiral, capa transparente, brochura</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-shield-alt text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Plastificação</h4>
+                        <p class="text-sm text-gray-600">RG, CPF, diplomas, certificados</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-cut text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Recorte</h4>
+                        <p class="text-sm text-gray-600">Guilhotinagem</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-orange/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange to-orange/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-orange transition-colors">Apostilas e TCCs</h4>
+                        <p class="text-sm text-gray-600">Artigos acadêmicos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apoio ao Cliente -->
+            <div class="mb-12 sm:mb-16">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-teal flex items-center justify-center">
+                    <i class="fas fa-headset mr-3"></i>
+                    Apoio ao Cliente
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-teal/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal to-teal/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-keyboard text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-teal transition-colors">Digitação</h4>
+                        <p class="text-sm text-gray-600">Textos simples</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-teal/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal to-teal/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-envelope text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-teal transition-colors">E-mails</h4>
+                        <p class="text-sm text-gray-600">Criação e envio</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-teal/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal to-teal/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-usb text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-teal transition-colors">Pendrive</h4>
+                        <p class="text-sm text-gray-600">Pen drive, CD ou nuvem</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-teal/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal to-teal/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-user-plus text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-teal transition-colors">Contas Online</h4>
+                        <p class="text-sm text-gray-600">Gov.br, e-mail, etc.</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-teal/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal to-teal/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-linkedin text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-teal transition-colors">Currículos Online</h4>
+                        <p class="text-sm text-gray-600">LinkedIn, Catho</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalizados Básicos -->
+            <div class="mb-12 sm:mb-16">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-blue flex items-center justify-center">
+                    <i class="fas fa-magic mr-3"></i>
+                    Personalizados Básicos
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-birthday-cake text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Convites</h4>
+                        <p class="text-sm text-gray-600">Aniversário, casamento, formatura</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-gift text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Lembrancinhas</h4>
+                        <p class="text-sm text-gray-600">Tags, cartões, caixinhas</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-crown text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Topos de Bolo</h4>
+                        <p class="text-sm text-gray-600">Personalizados</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-tag text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Etiquetas</h4>
+                        <p class="text-sm text-gray-600">Adesivas</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-id-card text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Cartões de Visita</h4>
+                        <p class="text-sm text-gray-600">Profissionais</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-file-alt text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Flyers e Panfletos</h4>
+                        <p class="text-sm text-gray-600">Promocionais</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-utensils text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Cardápios</h4>
+                        <p class="text-sm text-gray-600">Para lanchonetes</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-sign text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Avisos e Placas</h4>
+                        <p class="text-sm text-gray-600">Plastificadas</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-blue/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue to-blue/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-stamp text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-blue transition-colors">Carimbos <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Personalizados</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalizados Diferenciados -->
+            <div class="mb-12 sm:mb-16">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-pink flex items-center justify-center">
+                    <i class="fas fa-camera mr-3"></i>
+                    Personalizados Diferenciados
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-polaroid text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Fotos Polaroid</h4>
+                        <p class="text-sm text-gray-600">Estilo retrô</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-image text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Impressão de fotos</h4>
+                        <p class="text-sm text-gray-600">10x15, 15x20, 20x25</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-magnet text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Imãs de Geladeira <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Personalizados</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-sticker-mule text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Adesivos</h4>
+                        <p class="text-sm text-gray-600">Diversos tipos</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-calendar text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Mini Calendários</h4>
+                        <p class="text-sm text-gray-600">Personalizados</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-credit-card text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Cartões Fidelidade</h4>
+                        <p class="text-sm text-gray-600">Para negócios</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-frame text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Quadros <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Papel fotográfico</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-book-open text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Capas de Caderno</h4>
+                        <p class="text-sm text-gray-600">Personalizadas</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-file-signature text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Papel Timbrado</h4>
+                        <p class="text-sm text-gray-600">Negócios locais</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-id-badge text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Crachás</h4>
+                        <p class="text-sm text-gray-600">Plastificados</p>
+                    </div>
+                    <div class="group bg-gradient-to-br from-white to-gray-50 p-5 sm:p-7 rounded-2xl shadow-md hover:shadow-xl border border-gray-100 hover:border-pink/30 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink to-pink/80 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-window-maximize text-white text-xl"></i>
+                        </div>
+                        <h4 class="font-bold mb-2 text-gray-800 group-hover:text-pink transition-colors">Adesivos Parede <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Pequeno formato</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Criativos / Inovadores -->
+            <div class="mb-12 sm:mb-16">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-orange flex items-center justify-center">
+                    <i class="fas fa-lightbulb mr-3"></i>
+                    Criativos / Inovadores
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-flag text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Kits de Festa</h4>
+                        <p class="text-sm text-gray-600">Bandeirinhas, toppers, caixinhas</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-puzzle-piece text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Moldes Artesanato</h4>
+                        <p class="text-sm text-gray-600">Corte e monte</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-scroll text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Pôsteres</h4>
+                        <p class="text-sm text-gray-600">Banners pequenos</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-certificate text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Certificados</h4>
+                        <p class="text-sm text-gray-600">Personalizados</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-gamepad text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Jogo da Memória</h4>
+                        <p class="text-sm text-gray-600">Com fotos</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-calendar-alt text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Calendários</h4>
+                        <p class="text-sm text-gray-600">Mesa ou parede</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-camera-retro text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Fotos Lembrança</h4>
+                        <p class="text-sm text-gray-600">Moldura temática</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-map text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Mapas e Plantas</h4>
+                        <p class="text-sm text-gray-600">Simples</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-quote-left text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Quadros Motivacionais</h4>
+                        <p class="text-sm text-gray-600">Inspiradores</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-clipboard-list text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Planner</h4>
+                        <p class="text-sm text-gray-600">Semanal/mensal</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-orange">
+                        <i class="fas fa-star text-orange text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Adesivos Planner</h4>
+                        <p class="text-sm text-gray-600">Bullet journals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extras -->
+            <div class="mb-8">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-teal flex items-center justify-center">
+                    <i class="fas fa-plus mr-3"></i>
+                    Extras
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-school text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Trabalhos Escolares</h4>
+                        <p class="text-sm text-gray-600">Impressão e formatação</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-photo-video text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Álbuns Digitais</h4>
+                        <p class="text-sm text-gray-600">Montagem de fotos</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-shopping-cart text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Insumos <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full ml-2">em breve</span></h4>
+                        <p class="text-sm text-gray-600">Papel, canetas, envelopes</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-pen text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Redação</h4>
+                        <p class="text-sm text-gray-600">Cartas, declarações</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-briefcase text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Secretária de Bairro</h4>
+                        <p class="text-sm text-gray-600">Resolver papelada</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-paint-brush text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Logotipos</h4>
+                        <p class="text-sm text-gray-600">Criação simples</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-edit text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Edição de Fotos</h4>
+                        <p class="text-sm text-gray-600">Tratamento digital</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-presentation text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Slides</h4>
+                        <p class="text-sm text-gray-600">Montagem de apresentações</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-history text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Fotos Antigas</h4>
+                        <p class="text-sm text-gray-600">Digitalização</p>
+                    </div>
+                    <div class="card-hover bg-white p-4 sm:p-6 rounded-xl shadow-lg border-l-4 border-teal">
+                        <i class="fas fa-magic text-teal text-2xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Restauração</h4>
+                        <p class="text-sm text-gray-600">Fotos antigas digitais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section - Commented temporarily -->
+    <!--
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Nosso <span class="text-blue">Portfólio</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Confira alguns dos nossos trabalhos mais recentes e se inspire
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-orange to-pink flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Identidade Visual</h3>
+                        <p class="text-gray-600">Criação completa de marca para empresa de tecnologia</p>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-teal to-blue flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Material Promocional</h3>
+                        <p class="text-gray-600">Catálogos e folders para lançamento de produtos</p>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-pink to-orange flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sinalização</h3>
+                        <p class="text-gray-600">Sistema completo de sinalização para shopping center</p>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-blue to-teal flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Uniformes</h3>
+                        <p class="text-gray-600">Camisetas e uniformes personalizados para eventos</p>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-orange to-pink flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Papelaria</h3>
+                        <p class="text-gray-600">Cartões de visita e papelaria corporativa elegante</p>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-teal to-blue flex items-center justify-center">
+                        <i class="fas fa-image text-white text-4xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Brindes</h3>
+                        <p class="text-gray-600">Linha completa de brindes corporativos personalizados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Entre em <span class="text-orange">Contato</span></h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                    Pronto para dar vida ao seu projeto? Fale conosco e receba um orçamento personalizado
+                </p>
+            </div>
+            <div class="flex justify-center items-center gap-8 max-w-4xl mx-auto">
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/5511999999999" target="_blank" class="group bg-green-500 hover:bg-green-600 text-white px-8 py-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center space-x-4 min-w-[280px]">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fab fa-whatsapp text-3xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg">Falar no WhatsApp</p>
+                        <p class="opacity-90 text-sm">Resposta rápida e personalizada</p>
+                    </div>
+                </a>
+                
+                <!-- Location Button -->
+                <a href="https://maps.app.goo.gl/34ZgzfBYgu2xjUpy9" target="_blank" class="group bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center space-x-4 min-w-[280px]">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fas fa-map-marker-alt text-3xl"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg">Localização</p>
+                        <p class="opacity-90 text-sm">Rua Santa Isabel, 410 - Santa Isabel</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-gray text-white py-16">
+        <div class="container mx-auto px-6">
+            <!-- Logo centralizada na primeira linha -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center items-center space-x-4 mb-6">
+                    <img src="logo.png" alt="Brunm Logo" class="h-16 w-auto">
+                </div>
+            </div>
+            
+            <!-- Descrição centralizada na segunda linha -->
+            <div class="text-center mb-12">
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Gráfica rápida e personalizada, transformando suas ideias em realidade com qualidade e agilidade.
+                </p>
+            </div>
+            
+            <!-- Redes sociais centralizadas na terceira linha -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="group w-14 h-14 bg-orange/20 rounded-full flex items-center justify-center hover:bg-orange transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-facebook-f text-orange group-hover:text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="group w-14 h-14 bg-pink/20 rounded-full flex items-center justify-center hover:bg-pink transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-instagram text-pink group-hover:text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="group w-14 h-14 bg-green-500/20 rounded-full flex items-center justify-center hover:bg-green-500 transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-whatsapp text-green-500 group-hover:text-white text-xl"></i>
+                    </a>
+                    <a href="#" class="group w-14 h-14 bg-blue/20 rounded-full flex items-center justify-center hover:bg-blue transition-all duration-300 hover:scale-110">
+                        <i class="fab fa-linkedin-in text-blue group-hover:text-white text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Brunm - Gráfica Rápida e Personalizados - Feito por Bruno Maykon</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
