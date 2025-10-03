@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Tio Alê Pizza | Gráfica Brunm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #59CCBF 0%, #305596 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            color: #305596;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .client-info {
+            background: #FF9A48;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .client-name {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .quote-title {
+            color: #305596;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #59CCBF;
+            padding-bottom: 15px;
+        }
+
+        .package-highlight {
+            background: linear-gradient(135deg, #59CCBF, #305596);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .package-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .package-description {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FF9A48;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .specifications {
+            margin: 25px 0;
+        }
+
+        .spec-title {
+            color: #305596;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .spec-title::before {
+            content: "📋";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .spec-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: bold;
+            color: #305596;
+        }
+
+        .delivery-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #59CCBF;
+        }
+
+        .delivery-title {
+            color: #305596;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .delivery-title::before {
+            content: "🚚";
+            margin-right: 10px;
+        }
+
+        .payment-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 2px solid #59CCBF;
+        }
+
+        .payment-title {
+            color: #305596;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .payment-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .payment-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid #59CCBF;
+        }
+
+        .payment-step {
+            font-weight: bold;
+            color: #305596;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .payment-amount {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FF9A48;
+            margin-bottom: 8px;
+        }
+
+        .payment-when {
+            color: #666;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .payment-divider {
+            font-size: 2em;
+            font-weight: bold;
+            color: #59CCBF;
+            margin: 0 10px;
+        }
+
+        .payment-note {
+            background: #59CCBF;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1em;
+        }
+
+        @media (max-width: 768px) {
+            .payment-details {
+                flex-direction: column;
+            }
+            
+            .payment-divider {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+
+        .advantages {
+            margin: 25px 0;
+        }
+
+        .advantages-title {
+            color: #305596;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .advantages-title::before {
+            content: "⭐";
+            margin-right: 10px;
+        }
+
+        .advantages-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .advantages-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .advantages-list li::before {
+            content: "✔";
+            color: #59CCBF;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .footer {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            color: #305596;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            background: linear-gradient(135deg, #128C7E, #25D366);
+        }
+
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .company-name {
+                font-size: 2em;
+            }
+            
+            .quote-title {
+                font-size: 1.5em;
+            }
+            
+            .price {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Logomarca/logo v2 1080x1080 - fd branco.png" alt="Gráfica Brunm" class="logo">
+            <div class="client-info">
+                <div class="client-name">Tio Alê Pizza</div>
+                <div>Orçamento Personalizado</div>
+            </div>
+        </div>
+
+        <div class="quote-card">
+            <h2 class="quote-title">Orçamento – Panfletos</h2>
+            
+            <div class="package-highlight">
+                <div class="package-title">📦 Pacote Completo (1.000 unidades)</div>
+                <div class="package-description">
+                    Inclui: criação da arte exclusiva + impressão + entrega em domicílio
+                </div>
+                <div class="price">R$ 265,00</div>
+            </div>
+
+            <div class="specifications">
+                <h3 class="spec-title">Especificações do Material</h3>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Quantidade:</span>
+                        <span>1.000 panfletos</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Impressão:</span>
+                        <span>Colorida frente (4x0)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Papel:</span>
+                        <span>Couchê brilho 70g</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Tamanho final:</span>
+                        <span>9,7 x 14,7 cm</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Formato:</span>
+                        <span>Prático e leve para ampla distribuição</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="delivery-section">
+                <h3 class="delivery-title">Prazo de Entrega</h3>
+                <p><strong>7 a 10 dias corridos</strong> após a confirmação do pedido</p>
+            </div>
+
+            <div class="payment-section">
+                <h3 class="payment-title">💳 Forma de Pagamento</h3>
+                <div class="payment-details">
+                    <div class="payment-item">
+                        <div class="payment-step">1ª Parcela</div>
+                        <div class="payment-amount">R$ 132,50</div>
+                        <div class="payment-when">Na confirmação do pedido</div>
+                    </div>
+                    <div class="payment-divider">+</div>
+                    <div class="payment-item">
+                        <div class="payment-step">2ª Parcela</div>
+                        <div class="payment-amount">R$ 132,50</div>
+                        <div class="payment-when">Na entrega do material</div>
+                    </div>
+                </div>
+                <div class="payment-note">
+                    <strong>💡 Facilidade:</strong> Pagamento dividido em duas parcelas iguais para maior comodidade
+                </div>
+            </div>
+
+            <div class="advantages">
+                <h3 class="advantages-title">Vantagens para sua Pizzaria</h3>
+                <ul class="advantages-list">
+                    <li>Ideal para divulgar promoções, combos e cardápio</li>
+                    <li>Impressão em alta qualidade, com cores vivas que chamam atenção</li>
+                    <li>Ótimo custo-benefício para grande alcance</li>
+                    <li>Entrega direto no seu endereço, sem preocupação extra</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="contact-info">
+                <img src="Logomarca/Camaleão/camaleão 1080x640 - fd branco.png" alt="Gráfica Brunm - Camaleão" style="max-width: 150px; height: auto; margin-bottom: 15px;">
+                <br>
+                Soluções gráficas de qualidade para o seu negócio
+            </div>
+            <a href="https://wa.me/5586988695332?text=Olá! Gostaria de confirmar o pedido dos panfletos para a Tio Alê Pizza no valor de R$ 265,00" class="cta-button" target="_blank">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                </svg>
+                Confirmar pedido
+            </a>
+        </div>
+    </div>
+</body>
+</html>
