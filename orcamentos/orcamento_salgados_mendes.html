@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - Salgados Mendes | Gráfica Brunm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --teal: #59CCBF;
+            --blue: #305596;
+            --orange: #FF9A48;
+            --light: #f8f9fa;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header { background: linear-gradient(135deg, var(--blue), var(--teal)); color: #fff; text-align: center; padding: 40px 20px; border-radius: 20px 20px 0 0; }
+        .logo { max-width: 180px; height: auto; margin-bottom: 15px; }
+        .header h1 { font-size: 2.2em; margin: 0; font-weight: 800; }
+        .header .subtitle { font-size: 1.1em; opacity: 0.9; margin-top: 8px; }
+        .company-name { color: var(--blue); font-size: 2.2em; font-weight: 700; }
+        .client { background: var(--orange); color: #fff; border-radius: 12px; padding: 12px 16px; display: inline-block; margin-top: 10px; }
+        .section-title { color: var(--blue); font-size: 1.6em; font-weight: 700; text-align: center; border-bottom: 3px solid var(--teal); padding-bottom: 12px; margin: 18px 0; }
+
+        .items { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        .item { border: 2px solid var(--teal); border-radius: 14px; padding: 18px; }
+        .item h4 { color: var(--blue); font-size: 1.2em; margin-bottom: 8px; }
+        .meta { color: #666; font-size: 0.95em; margin-bottom: 10px; }
+        .prices { display: flex; gap: 18px; flex-wrap: wrap; }
+        .price-chip { background: var(--light); border: 1px dashed var(--teal); border-radius: 10px; padding: 8px 12px; font-weight: 600; }
+        .total { font-size: 1.4em; font-weight: 800; color: var(--orange); margin-top: 8px; }
+
+        .summary { margin-top: 18px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: #fff; border-radius: 12px; padding: 18px; text-align: center; }
+        .grand-total { font-size: 2em; font-weight: 800; }
+
+        .delivery, .payment { background: var(--light); border-left: 6px solid var(--teal); border-radius: 12px; padding: 16px; margin-top: 16px; }
+        .delivery h5, .payment h5 { color: var(--blue); font-size: 1.1em; margin-bottom: 8px; }
+
+        .bonus { background: linear-gradient(135deg, var(--orange), var(--teal)); color: #fff; border-radius: 12px; padding: 18px; margin-top: 16px; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .bonus h5 { font-size: 1.2em; margin-bottom: 8px; }
+        .bonus .badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); padding: 8px 12px; border-radius: 999px; font-weight: 600; }
+
+        .payment-grid { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .payment-card { background: #fff; border: 2px solid var(--teal); border-radius: 12px; padding: 14px; min-width: 160px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .payment-card .label { color: var(--blue); font-weight: 700; }
+        .payment-card .amount { color: var(--orange); font-size: 1.4em; font-weight: 800; }
+        .divider { font-size: 1.6em; font-weight: 800; color: var(--teal); }
+
+        .discount { background: #fff; border: 2px dashed var(--orange); border-radius: 12px; padding: 14px; text-align: center; margin-top: 16px; }
+        .discount .discount-value { color: var(--orange); font-size: 1.3em; font-weight: 800; }
+        .payment-total { background: var(--teal); color: #fff; border-radius: 10px; padding: 12px 16px; font-weight: 800; text-align: center; margin-bottom: 12px; }
+
+        .logo-footer { max-width: 150px; height: auto; margin-bottom: 10px; }
+        .brand { color: var(--blue); font-size: 0.95em; margin-bottom: 10px; }
+
+        .footer { text-align: center; margin-top: 22px; }
+        .cta { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; padding: 14px 24px; border-radius: 28px; font-weight: 700; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; box-shadow: 0 6px 18px rgba(37,211,102,0.35); }
+        .cta:hover { filter: brightness(1.05); transform: translateY(-2px); transition: all .2s ease; }
+
+        @media (max-width: 768px) { .items { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="Logomarca/Transparentes/PARA FUNDO BRANCO/logo v2 1080x1080 - fd branco.png" alt="Gráfica Brunm" class="logo">
+            <div class="subtitle">Orçamento personalizado para Salgados Mendes</div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">Orçamento – Adesivos Personalizados</div>
+
+            <div class="items">
+                <div class="item">
+                    <h4>Adesivos 7,43 × 5,25 cm (para vasinha de hambúrguer)</h4>
+                    <div class="meta">16 adesivos por folha A4 • Papel fotográfico adesivo • Impressão colorida</div>
+                    <div class="prices">
+                        <div class="price-chip">Quantidade: 70 unidades</div>
+                    </div>
+                    <div class="total">Total: R$ 53,20</div>
+                </div>
+
+                <div class="item">
+                    <h4>Adesivos 9,9 × 7,0 cm (para caixa de pizza)</h4>
+                    <div class="meta">9 adesivos por folha A4 • Papel fotográfico adesivo • Impressão colorida</div>
+                    <div class="prices">
+                        <div class="price-chip">Quantidade: 30 unidades</div>
+                    </div>
+                    <div class="total">Total: R$ 37,41</div>
+                </div>
+            </div>
+
+            <div class="summary">
+                <div>Prazo de entrega: <strong>1 dia útil</strong> após confirmação</div>
+                <div class="grand-total">Valor total do pedido: R$ 90,61</div>
+            </div>
+
+            <div class="bonus">
+                <h5>🎁 Brinde em Destaque</h5>
+                <div class="badge">Criação de arte para o adesivo incluída</div>
+            </div>
+
+            <div class="discount">
+                <div>Desconto aplicado:</div>
+                <div class="discount-value">R$ 10,61</div>
+            </div>
+
+            <div class="payment">
+                <h5>Forma de Pagamento (50/50)</h5>
+                <div class="payment-total">
+                    <div class="discount-label">💰 Total com desconto aplicado</div>
+                    <div class="total-value">R$ 80,00</div>
+                </div>
+                <div class="payment-grid">
+                    <div class="payment-card">
+                        <div class="label">1ª Parcela</div>
+                        <div class="amount">R$ 40,00</div>
+                        <div>Na confirmação do pedido</div>
+                    </div>
+                    <div class="divider">+</div>
+                    <div class="payment-card">
+                        <div class="label">2ª Parcela</div>
+                        <div class="amount">R$ 40,00</div>
+                        <div>Na finalização/entrega</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="brand">
+                    <img src="Logomarca/Camaleão/camaleão 1080x640 - fd branco.png" alt="Gráfica Brunm" class="logo-footer">
+                    <div>Soluções gráficas de qualidade para o seu negócio</div>
+                </div>
+                <a class="cta" target="_blank" href="https://wa.me/5586988695332?text=Olá! Gostaria de confirmar o orçamento dos adesivos para a Salgados Mendes (R$ 80,00 com desconto).">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+                    Confirmar pedido via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
